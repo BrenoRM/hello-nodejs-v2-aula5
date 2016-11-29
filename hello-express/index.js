@@ -11,4 +11,18 @@ app.get("/queryparams", (req,res) => {
   res.send("Veja no console");
 });
 
+app.get("/pathparams/:nome/:time",  (req,res) => {
+  res.send("Veja no console");
+  console.log(req.params);
+  console.log(`Meu nome é ${req.params.nome} e eu sou ${req.params.time} desde sempre`);
+});
+
+app.get("/optional(/:maybe)?", function (req,res){
+  if(req.params.maybe)
+    res.send("Call me " + req.params.maybe)
+  else
+    res.send("I just met you");
+  console.log(req.params)
+});
+
 app.listen(3000);
